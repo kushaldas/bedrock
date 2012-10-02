@@ -1,0 +1,71 @@
+@import "sandstone/variables.less";
+@import "sandstone/mixins.less";
+
+@background: #f5f1e8;
+
+hgroup {
+    text-align: center;
+    padding-bottom: @baseLine * 2;
+    img {
+        width: 100%;
+        height: auto;
+        padding-top: @baseLine * 2;
+    }
+}
+
+#events_table {
+    font-size: 13px;
+    border-collapse: collapse;
+    th,
+    td {
+        padding: 10px;
+    }
+    thead {
+        th {
+            border-bottom: 1px solid #666666;
+            text-align: left;
+        }
+    }
+    tbody {
+        tr {
+            &.odd {
+                background: darken(@background, 2%);
+            }
+        }
+        th {
+            font-weight: normal;
+            text-align: left;
+        }
+        th,
+        td {
+            border-top: solid 1px darken(@background, 10%);
+        }
+        
+    }
+}
+
+#updates {
+    margin-bottom: @baseLine * 2;
+    p { margin: 0; }
+    .field {
+        .clearfix;
+        padding: @baseLine / 4  0;
+
+        input[type=email] {
+            width: (@gridColumnWidth * 3) + (@gridGutterWidth * 2) - 18px;
+        }
+
+        .title {
+            font-size: 14px;
+        }
+
+        small {
+            color: @textColorTertiary;
+        }
+    }
+}
+
+#gameon .sidebar {
+    margin: 0 0 0 100px;
+    width: 268px;
+}
