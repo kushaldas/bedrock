@@ -3,7 +3,8 @@ from django.conf import settings
 from product_details import product_details
 
 from firefox import version_re
-from mozorg.util import page, redirect
+from redirects.util import redirect
+from mozorg.util import page
 import views
 
 whatsnew_re = r'^firefox(?:/(%s))?/whatsnew/$' % version_re
@@ -42,6 +43,7 @@ urlpatterns = patterns('',
 
     page('firefox/unsupported/warning', 'firefox/unsupported-warning.html'),
     page('firefox/unsupported/EOL', 'firefox/unsupported-EOL.html'),
+    page('firefox/unsupported/mac', 'firefox/unsupported-mac.html'),
 
     url(r'^firefox/unsupported/win/$', views.windows_billboards),
     url('^dnt/$', views.dnt, name='firefox.dnt'),

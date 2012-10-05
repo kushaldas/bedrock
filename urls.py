@@ -14,13 +14,14 @@ handler500 = 'bedrock_util.server_error_view'
 
 urlpatterns = patterns('',
     # Main pages
-    (r'^b2g/', include('b2g.urls')),
+    (r'^firefoxos/', include('firefoxos.urls')),
     (r'^webmaker/', include('webmaker.urls')),
     (r'^grants/', include('grants.urls')),
     (r'^collusion/', include('collusion.urls')),
     (r'^apps/', include('marketplace.urls')),
     (r'^persona/', include('persona.urls')),
     (r'^styleguide/', include('styleguide.urls')),
+    (r'', include('redirects.urls')),
     (r'', include('firefox.urls')),
     (r'', include('mozorg.urls')),
     (r'', include('privacy.urls')),

@@ -67,8 +67,8 @@ MINIFY_BUNDLES = {
         'mobile_overview': (
             'css/mobile.less',
         ),
-        'b2g': (
-            'css/b2g.less',
+        'firefoxos': (
+            'css/firefoxos.less',
         ),
         'webmaker': (
             'css/webmaker.less',
@@ -87,6 +87,7 @@ MINIFY_BUNDLES = {
         ),
         'contribute': (
             'css/contribute.less',
+            'css/sandstone/video-resp.less',
         ),
         'contribute-page': (
             'css/contribute-page.less',
@@ -434,7 +435,7 @@ INSTALLED_APPS = (
     'product_details',
 
     # Local apps
-    'b2g',
+    'firefoxos',
     'webmaker',
     'grants',
     'collusion',
@@ -445,6 +446,7 @@ INSTALLED_APPS = (
     'research',
     'styleguide',
     'privacy',
+    'redirects',
 
     # libs
     'l10n_utils',
