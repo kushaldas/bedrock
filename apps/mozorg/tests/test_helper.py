@@ -260,6 +260,8 @@ class TestNewsletterFunction(unittest.TestCase):
             'newsletter-footer': 'Y',
             'newsletter': 'mozilla-and-you',
             'email': 'foo@bar.com',
+            'country': 'us',
+            'language': 'en-US',
             'fmt': 'H',
             'privacy': 'Y',
         }
