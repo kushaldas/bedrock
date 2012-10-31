@@ -6,7 +6,7 @@ import basket
 from django_statsd.middleware import GraphiteRequestTimingMiddleware
 
 from l10n_utils.dotlang import _lazy
-from mozorg.forms import NewsletterCountryForm
+from mozorg.forms import NewsletterForm
 
 
 class CacheMiddleware(object):
@@ -41,7 +41,7 @@ class NewsletterMiddleware(object):
     """Processes newsletter subscriptions"""
     def process_request(self, request):
         success = False
-        form = NewsletterCountryForm(request.locale, request.POST or None)
+        form = NewsletterForm(request.locale, request.POST or None)
 
         is_footer_form = (request.method == 'POST' and
                           'newsletter-footer' in request.POST)
@@ -52,7 +52,8 @@ class NewsletterMiddleware(object):
                     basket.subscribe(data['email'], data['newsletter'],
                                      format=data['fmt'],
                                      country=data['country'],
-                                     lang=data['language'])
+                                     lang=data['language'],
+                                     source_url=data['source_url'])
                     success = True
                 except basket.BasketException:
                     msg = _lazy("We are sorry, but there was a problem "

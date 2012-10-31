@@ -1,4 +1,6 @@
 # coding: utf-8
+import re
+from operator import itemgetter
 
 from django import forms
 from django.conf import settings
@@ -14,20 +16,31 @@ from .email_contribute import INTEREST_CHOICES
 
 FORMATS = (('H', 'HTML'), ('T', 'Text'))
 LANGS = settings.NEWSLETTER_LANGUAGES
+LANGS_TO_STRIP = ['en-US', 'es']
+PARENTHETIC_RE = re.compile(r' \([^)]+\)$')
 
 
-def get_lang_choices(locale):
+def strip_parenthetical(lang_name):
+    """
+    Remove the parenthetical from the end of the language name string.
+    """
+    return PARENTHETIC_RE.sub('', lang_name, 1)
+
+
+def get_lang_choices():
     """
      Return a list of choices for language localized for the given locale.
     """
     lang_choices = []
-    for lang in sorted(LANGS):
+    for lang in LANGS:
         try:
-            lang_choices.append([lang,
-                                 product_details.languages[lang]['native']])
+            lang_name = product_details.languages[lang]['native']
         except KeyError:
-            pass
-    return lang_choices
+            continue
+        if lang in LANGS_TO_STRIP:
+            lang_name = strip_parenthetical(lang_name)
+        lang_choices.append([lang, lang_name])
+    return sorted(lang_choices, key=itemgetter(1))
 
 
 class SideRadios(widgets.RadioFieldRenderer):
@@ -73,20 +86,19 @@ class NewsletterForm(forms.Form):
                             choices=FORMATS,
                             initial='H')
     privacy = forms.BooleanField(widget=PrivacyWidget)
+    source_url = forms.URLField(verify_exists=False, required=False)
 
-
-class NewsletterCountryForm(NewsletterForm):
     def __init__(self, locale, *args, **kwargs):
         regions = product_details.get_regions(locale)
         regions = sorted(regions.iteritems(), key=lambda x: x[1])
-        lang_choices = get_lang_choices(locale)
+        lang_choices = get_lang_choices()
         lang_initial = locale if locale in LANGS else 'en-US'
 
         ccode = locale.lower()
         if '-' in ccode:
             ccode = ccode.split('-')[1]
 
-        super(NewsletterCountryForm, self).__init__(*args, **kwargs)
+        super(NewsletterForm, self).__init__(*args, **kwargs)
         self.fields['country'] = forms.ChoiceField(choices=regions,
                                                    initial=ccode)
         self.fields['language'] = forms.ChoiceField(choices=lang_choices,

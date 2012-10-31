@@ -30,8 +30,7 @@ PROD_LANGUAGES = ('ab-CD', 'ach', 'af', 'ak', 'ar', 'as', 'ast', 'be', 'bg',
                   'sv-SE', 'sw', 'ta', 'ta-LK', 'te', 'th', 'tr', 'uk',
                   'vi', 'wo', 'zh-CN', 'zh-TW', 'zu')
 DEV_LANGUAGES = list(DEV_LANGUAGES) + ['en-US']
-NEWSLETTER_LANGUAGES = ['en-US', 'fr', 'de', 'pt-PT', 'pt-BR',
-                        'es', 'id', 'ru']
+NEWSLETTER_LANGUAGES = ['de', 'en-US', 'es', 'fr', 'id', 'pt-BR', 'ru']
 
 FEED_CACHE = 3900
 DOTLANG_CACHE = 60

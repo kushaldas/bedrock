@@ -25,6 +25,7 @@
           onsubmit="dcsMultiTrack('DCS.dcsuri','/signmeup.button','WT.ti','Sign%20Me%20Up','WT.dl','26');">
       <input type="hidden" name="newsletter-footer" value="Y">
       <input type="hidden" name="newsletter" value="{{ newsletter_id }}">
+      <input type="hidden" name="source_url" value="{{ request.build_absolute_uri() }}">
 
       <h3>{{ title|d(_('Get Firefox news'), true) }}</h3>
 
@@ -51,7 +52,7 @@
 
       <div class="form-submit">
         <input type="submit" id="footer_email_submit"
-               value="Sign me up »" class="button">
+               value="{{ _('Sign me up »') }}" class="button">
 
         <p class="form-details">
           <small>{{ _('We will only send you Mozilla-related information.') }}</small>
