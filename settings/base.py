@@ -187,6 +187,9 @@ MINIFY_BUNDLES = {
         ),
         'home': (
             'css/home.less',
+            'css/jquery.uls.grid.css',
+            'css/jquery.uls.lcd.css',
+            'css/jquery.uls.css',
         ),
         'marketplace': (
             'css/marketplace.less',
@@ -345,6 +348,12 @@ MINIFY_BUNDLES = {
             'js/global.js',
             'js/nav-main-resp.js',
             'js/footer-email-form.js',
+            'js/uls/jquery.uls.data.js',
+            'js/uls/jquery.uls.data.utils.js',
+            'js/uls/jquery.uls.lcd.js',
+            'js/uls/jquery.uls.languagefilter.js',
+            'js/uls/jquery.uls.regionfilter.js',
+            'js/uls/jquery.uls.core.js',
         ),
         'pager': (
             'js/mozilla-pager.js',

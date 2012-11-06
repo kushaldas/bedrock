@@ -270,4 +270,18 @@
 
 {% block site_js %}
   {{ js('mozorg-resp') }}
+
+  <script>
+        $( document ).ready( function() {
+                $( '.uls-trigger' ).uls( {
+                        onSelect : function( language ) {
+                                var uri = window.location.href.split('/');
+                                uri[3] = language;
+                                uri[0] = "http://";
+                                window.location.href = uri.join('/');
+                        }
+                } );
+        } );
+  </script>
+
 {% endblock %}
