@@ -187,9 +187,7 @@ MINIFY_BUNDLES = {
         ),
         'home': (
             'css/home.less',
-            'css/jquery.uls.grid.css',
-            'css/jquery.uls.lcd.css',
-            'css/jquery.uls.css',
+
         ),
         'marketplace': (
             'css/marketplace.less',
@@ -236,6 +234,11 @@ MINIFY_BUNDLES = {
             'css/styleguide/identity-thunderbird.less',
             'css/styleguide/identity-webmaker.less',
             'css/styleguide/communications.less',
+        ),
+        'uls': (
+            'css/jquery.uls.grid.css',
+            'css/jquery.uls.lcd.css',
+            'css/jquery.uls.css',
         ),
         'video': (
             'css/sandstone/video.less',
