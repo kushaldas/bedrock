@@ -273,7 +273,13 @@
 
   <script>
         $( document ).ready( function() {
+            var i18n = $.i18n();
                 $( '.uls-trigger' ).uls( {
+                        onReady: function ( ) {
+                            i18n.locale = "{{ LANG }}";
+                            i18n.load( '/media/js/uls/i18n/{{ LANG }}.json', '{{ LANG }}' );
+                            this.i18n();
+                        },
                         onSelect : function( language ) {
                                 var uri = window.location.href.split('/');
                                 uri[3] = language;

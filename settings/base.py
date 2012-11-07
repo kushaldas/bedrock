@@ -357,6 +357,7 @@ MINIFY_BUNDLES = {
             'js/uls/jquery.uls.languagefilter.js',
             'js/uls/jquery.uls.regionfilter.js',
             'js/uls/jquery.uls.core.js',
+            'js/uls/jquery.i18n.min.js',
         ),
         'pager': (
             'js/mozilla-pager.js',
